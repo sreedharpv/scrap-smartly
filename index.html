@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ironclad Scrap Metal - Top dollar for your ferrous and non-ferrous metals. Fast pickup, fair scales, and same-day payment.">
+  <title>Ironclad Scrap Metal - We Buy Your Scrap Metal</title>
+  <link rel="icon" type="image/x-icon" href="./public/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--background:hsl(220,14%,10%);--foreground:hsl(40,20%,95%);--card:hsl(220,14%,14%);--primary:hsl(35,92%,50%);--primary-foreground:hsl(220,14%,10%);--secondary:hsl(220,14%,18%);--muted:hsl(220,14%,20%);--muted-foreground:hsl(220,10%,60%);--border:hsl(220,14%,22%);--accent-gradient:linear-gradient(135deg,hsl(35,92%,50%) 0%,hsl(25,95%,45%) 100%);--shadow-glow:0 0 40px hsla(35,92%,50%,0.15)}
+    body{font-family:'Inter',sans-serif;background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4,h5,h6{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+    .header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(23,25,30,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:80px}
+    .logo{display:flex;align-items:center;gap:.5rem}
+    .logo svg{width:32px;height:32px;color:var(--primary)}
+    .logo-text{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--foreground)}
+    .nav{display:none;gap:2rem}
+    .nav a{color:var(--muted-foreground);font-size:.875rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;transition:color .2s}
+    .nav a:hover{color:var(--primary)}
+    .header-cta{display:none;align-items:center;gap:1rem}
+    .phone-link{display:flex;align-items:center;gap:.5rem;color:var(--primary);font-weight:600}
+    .phone-link svg{width:16px;height:16px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.75rem 1.5rem;font-family:'Oswald',sans-serif;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;border-radius:.5rem;cursor:pointer;transition:all .2s;border:none}
+    .btn-hero{background:var(--accent-gradient);color:var(--primary-foreground);box-shadow:0 4px 20px hsla(35,92%,50%,.3)}
+    .btn-hero:hover{transform:translateY(-2px);box-shadow:0 6px 30px hsla(35,92%,50%,.4)}
+    .btn-outline{background:transparent;color:var(--foreground);border:2px solid var(--border)}
+    .btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+    .btn-xl{padding:1rem 2rem;font-size:1rem}
+    .mobile-menu-btn{display:flex;background:none;border:none;color:var(--foreground);cursor:pointer}
+    .mobile-menu-btn svg{width:24px;height:24px}
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:80px}
+    .hero-bg{position:absolute;inset:0;background:url('src/assets/hero-bg.jpg') center/cover no-repeat}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--background),rgba(23,25,30,.9),rgba(23,25,30,.7))}
+    .hero-content{position:relative;padding:5rem 0;max-width:800px}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:hsla(35,92%,50%,.1);border:1px solid hsla(35,92%,50%,.3);border-radius:9999px;padding:.5rem 1rem;margin-bottom:1.5rem}
+    .badge svg{width:16px;height:16px;color:var(--primary)}
+    .badge span{color:var(--primary);font-size:.875rem;font-weight:500}
+    .hero h1{font-size:clamp(3rem,8vw,6rem);line-height:.9;margin-bottom:1.5rem}
+    .text-gradient{background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-desc{font-size:clamp(1.125rem,2vw,1.5rem);color:var(--muted-foreground);max-width:600px;margin-bottom:2rem}
+    .hero-buttons{display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem}
+    .trust-indicators{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .trust-item{display:flex;align-items:center;gap:.75rem}
+    .trust-icon{width:48px;height:48px;border-radius:.5rem;background:hsla(35,92%,50%,.1);display:flex;align-items:center;justify-content:center}
+    .trust-icon svg{width:24px;height:24px;color:var(--primary)}
+    .trust-value{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--foreground)}
+    .trust-label{font-size:.875rem;color:var(--muted-foreground)}
+    .section{padding:6rem 0}
+    .section-card{background:var(--card)}
+    .section-header{text-align:center;margin-bottom:4rem}
+    .section-label{color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.875rem}
+    .section-title{font-size:clamp(2rem,5vw,3rem);margin-top:1rem;margin-bottom:1rem}
+    .section-desc{color:var(--muted-foreground);font-size:1.125rem;max-width:600px;margin:0 auto}
+    .metals-grid{display:grid;gap:1.5rem}
+    .metal-card{background:var(--background);border:1px solid var(--border);border-radius:.5rem;padding:2rem;transition:all .3s}
+    .metal-card:hover{border-color:hsla(35,92%,50%,.5);box-shadow:0 0 30px hsla(35,92%,50%,.1)}
+    .metal-icon{width:56px;height:56px;border-radius:.5rem;background:hsla(35,92%,50%,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+    .metal-icon svg{width:28px;height:28px;color:var(--primary)}
+    .metal-name{font-size:1.5rem;margin-bottom:.5rem}
+    .metal-desc{color:var(--muted-foreground);font-size:.875rem;margin-bottom:1rem}
+    .metal-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border)}
+    .metal-price{color:var(--primary);font-weight:600}
+    .metal-updated{color:var(--muted-foreground);font-size:.875rem}
+    .why-us-grid{display:grid;gap:4rem}
+    .benefits-grid{display:grid;gap:1.5rem}
+    .benefit-item{display:flex;gap:1rem}
+    .benefit-icon{width:48px;height:48px;border-radius:.5rem;background:var(--secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .benefit-icon svg{width:24px;height:24px;color:var(--primary)}
+    .benefit-title{font-size:1.125rem;margin-bottom:.25rem}
+    .benefit-desc{color:var(--muted-foreground);font-size:.875rem}
+    .stats-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:2.5rem;box-shadow:var(--shadow-glow)}
+    .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+    .stat-item{text-align:center;padding:1.5rem;background:var(--background);border-radius:.75rem}
+    .stat-value{font-family:'Oswald',sans-serif;font-size:3rem;color:var(--primary);margin-bottom:.5rem}
+    .stat-label{color:var(--muted-foreground);font-size:.875rem;text-transform:uppercase;letter-spacing:.05em}
+    .contact-grid{display:grid;gap:4rem}
+    .contact-info-list{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2rem}
+    .contact-info-item{display:flex;gap:1rem}
+    .contact-info-icon{width:48px;height:48px;border-radius:.5rem;background:hsla(35,92%,50%,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .contact-info-icon svg{width:24px;height:24px;color:var(--primary)}
+    .contact-info-title{font-size:1.125rem;margin-bottom:.25rem}
+    .contact-info-text{color:var(--muted-foreground)}
+    .quote-form{background:var(--background);border:1px solid var(--border);border-radius:1rem;padding:2rem}
+    .form-title{font-size:1.5rem;margin-bottom:1.5rem}
+    .form-group{margin-bottom:1rem}
+    .form-row{display:grid;gap:1rem}
+    .form-label{display:block;font-size:.875rem;color:var(--muted-foreground);margin-bottom:.5rem}
+    .form-input,.form-textarea{width:100%;padding:.75rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:.5rem;color:var(--foreground);font-family:inherit;font-size:1rem;transition:border-color .2s}
+    .form-input:focus,.form-textarea:focus{outline:none;border-color:var(--primary)}
+    .form-textarea{resize:vertical;min-height:100px}
+    .form-submit{width:100%;margin-top:.5rem}
+    .footer{background:var(--card);border-top:1px solid var(--border);padding:4rem 0 2rem}
+    .footer-grid{display:grid;gap:3rem;margin-bottom:3rem}
+    .footer-brand p{color:var(--muted-foreground);font-size:.875rem;line-height:1.7;margin-top:1rem}
+    .footer-title{font-size:1.125rem;margin-bottom:1rem}
+    .footer-links{list-style:none}
+    .footer-links li{margin-bottom:.5rem}
+    .footer-links a{color:var(--muted-foreground);font-size:.875rem;transition:color .2s}
+    .footer-links a:hover{color:var(--primary)}
+    .footer-metals li{color:var(--muted-foreground);font-size:.875rem;margin-bottom:.5rem;list-style:none}
+    .footer-contact-list{list-style:none}
+    .footer-contact-item{display:flex;gap:.75rem;margin-bottom:1rem}
+    .footer-contact-item svg{width:20px;height:20px;color:var(--primary);flex-shrink:0;margin-top:.125rem}
+    .footer-contact-item span{color:var(--muted-foreground);font-size:.875rem}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;flex-direction:column;gap:1rem;text-align:center}
+    .footer-bottom p{color:var(--muted-foreground);font-size:.875rem}
+    .footer-legal{display:flex;gap:1.5rem;justify-content:center}
+    .footer-legal a{color:var(--muted-foreground);font-size:.875rem;transition:color .2s}
+    .footer-legal a:hover{color:var(--primary)}
+    .mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:var(--card);border-bottom:1px solid var(--border);padding:1.5rem;z-index:40}
+    .mobile-menu.active{display:block}
+    .mobile-nav{display:flex;flex-direction:column;gap:1rem}
+    .mobile-nav a{color:var(--foreground);font-weight:500;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 0;transition:color .2s}
+    .mobile-nav a:hover{color:var(--primary)}
+    .mobile-cta{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+    @media(min-width:640px){.hero-buttons{flex-direction:row}.form-row{grid-template-columns:repeat(2,1fr)}.benefits-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:768px){.nav{display:flex}.header-cta{display:flex}.mobile-menu-btn{display:none}.metals-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(4,1fr)}.footer-bottom{flex-direction:row;justify-content:space-between;text-align:left}}
+    @media(min-width:1024px){.metals-grid{grid-template-columns:repeat(3,1fr)}.why-us-grid{grid-template-columns:repeat(2,1fr);align-items:center}.contact-grid{grid-template-columns:repeat(2,1fr)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fade-up{animation:fadeUp .6s ease-out forwards}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="container"><div class="header-inner">
+    <a href="#" class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 7.196 9.5 3.1 10.598"/><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/><path d="m13.378 9.633 4.096 1.098 1.097-4.096"/></svg><span class="logo-text">IRONCLAD</span></a>
+    <nav class="nav"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <div class="header-cta"><a href="tel:5551234567" class="phone-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(555) 123-4567</a><a href="#contact" class="btn btn-hero">Get a Quote</a></div>
+    <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu"><svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg><svg id="close-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  </div></div></header>
+
+  <div id="mobile-menu" class="mobile-menu"><nav class="mobile-nav"><a href="#services" onclick="closeMenu()">Services</a><a href="#pricing" onclick="closeMenu()">Pricing</a><a href="#about" onclick="closeMenu()">About</a><a href="#contact" onclick="closeMenu()">Contact</a></nav><div class="mobile-cta"><a href="#contact" class="btn btn-hero" style="width:100%" onclick="closeMenu()">Get a Quote</a></div></div>
+
+  <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+    <div class="badge animate-fade-up"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span>Trusted Since 1985</span></div>
+    <h1 class="animate-fade-up" style="animation-delay:.1s">We Buy Your<br><span class="text-gradient">Scrap Metal</span></h1>
+    <p class="hero-desc animate-fade-up" style="animation-delay:.2s">Top dollar for your ferrous and non-ferrous metals. Fast pickup, fair scales, and same-day payment.</p>
+    <div class="hero-buttons animate-fade-up" style="animation-delay:.3s"><a href="#contact" class="btn btn-hero btn-xl">Get Free Quote <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a href="#services" class="btn btn-outline btn-xl">View Our Prices</a></div>
+    <div class="trust-indicators animate-fade-up" style="animation-delay:.4s">
+      <div class="trust-item"><div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg></div><div><p class="trust-value">$50M+</p><p class="trust-label">Paid Out</p></div></div>
+      <div class="trust-item"><div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><div><p class="trust-value">500+</p><p class="trust-label">Daily Pickups</p></div></div>
+      <div class="trust-item"><div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><div><p class="trust-value">40+</p><p class="trust-label">Years Trusted</p></div></div>
+    </div>
+  </div></div></section>
+
+  <section id="services" class="section section-card"><div class="container">
+    <div class="section-header"><span class="section-label">What We Buy</span><h2 class="section-title">We Accept All Metals</h2><p class="section-desc">From small loads to industrial quantities, we offer competitive pricing for all types of scrap metal.</p></div>
+    <div class="metals-grid">
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div><h3 class="metal-name">Steel & Iron</h3><p class="metal-desc">Structural steel, rebar, sheet metal, cast iron, and all ferrous metals.</p><div class="metal-footer"><span class="metal-price">Up to $250/ton</span><span class="metal-updated">Updated Daily</span></div></div>
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div><h3 class="metal-name">Copper</h3><p class="metal-desc">Wire, tubing, pipes, transformers, motors, and all copper grades.</p><div class="metal-footer"><span class="metal-price">Up to $3.50/lb</span><span class="metal-updated">Updated Daily</span></div></div>
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div><h3 class="metal-name">Aluminum</h3><p class="metal-desc">Cans, siding, wheels, extrusions, and all aluminum alloys.</p><div class="metal-footer"><span class="metal-price">Up to $0.85/lb</span><span class="metal-updated">Updated Daily</span></div></div>
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg></div><h3 class="metal-name">Brass</h3><p class="metal-desc">Fittings, valves, plumbing fixtures, and decorative items.</p><div class="metal-footer"><span class="metal-price">Up to $1.80/lb</span><span class="metal-updated">Updated Daily</span></div></div>
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div><h3 class="metal-name">Stainless Steel</h3><p class="metal-desc">Food grade, industrial equipment, and surgical steel.</p><div class="metal-footer"><span class="metal-price">Up to $0.65/lb</span><span class="metal-updated">Updated Daily</span></div></div>
+      <div class="metal-card"><div class="metal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.531 12.469 6.619 20.38a1 1 0 1 1-3-3l7.912-7.912"/><path d="M15.686 4.314A12.5 12.5 0 0 0 5.461 2.958 1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393"/><path d="M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z"/><path d="M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225 1 1 0 0 1-1.751-.119 22 22 0 0 0-3.393-6.319"/></svg></div><h3 class="metal-name">Mixed Metals</h3><p class="metal-desc">Lead, zinc, nickel, and other specialty metals.</p><div class="metal-footer"><span class="metal-price">Competitive Rates</span><span class="metal-updated">Updated Daily</span></div></div>
+    </div>
+  </div></section>
+
+  <section id="about" class="section"><div class="container"><div class="why-us-grid">
+    <div><span class="section-label">Why Choose Us</span><h2 class="section-title" style="text-align:left;margin-top:1rem;margin-bottom:1.5rem">The Scrap Yard You Can Trust</h2><p style="color:var(--muted-foreground);font-size:1.125rem;margin-bottom:2rem">For over 40 years, Ironclad has been the region's most trusted name in metal recycling. We combine old-fashioned integrity with modern efficiency to give you the best experience.</p>
+      <div class="benefits-grid">
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><div><h4 class="benefit-title">Certified Scales</h4><p class="benefit-desc">State-certified scales ensure you get accurate weights and fair payment.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></div><div><h4 class="benefit-title">Same-Day Payment</h4><p class="benefit-desc">Get paid on the spot with cash or check. No waiting, no hassle.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><div><h4 class="benefit-title">Free Pickup</h4><p class="benefit-desc">Large loads? We'll come to you with our fleet of trucks.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><div><h4 class="benefit-title">Eco-Friendly</h4><p class="benefit-desc">Responsible recycling practices that protect our environment.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><h4 class="benefit-title">Quick Service</h4><p class="benefit-desc">In and out in minutes with efficient processing.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><div><h4 class="benefit-title">Licensed & Insured</h4><p class="benefit-desc">Fully licensed with comprehensive insurance coverage.</p></div></div>
+      </div>
+    </div>
+    <div class="stats-card"><div class="stats-grid"><div class="stat-item"><p class="stat-value">40+</p><p class="stat-label">Years in Business</p></div><div class="stat-item"><p class="stat-value">15K+</p><p class="stat-label">Happy Customers</p></div><div class="stat-item"><p class="stat-value">100K</p><p class="stat-label">Tons Recycled</p></div><div class="stat-item"><p class="stat-value">A+</p><p class="stat-label">BBB Rating</p></div></div></div>
+  </div></div></section>
+
+  <section id="contact" class="section section-card"><div class="container"><div class="contact-grid">
+    <div><span class="section-label">Get In Touch</span><h2 class="section-title" style="text-align:left;margin-top:1rem;margin-bottom:1.5rem">Ready to Sell Your Scrap?</h2><p style="color:var(--muted-foreground);font-size:1.125rem;margin-bottom:2rem">Get a free quote today. Whether you have a truckload or a small amount, we're here to help you turn that scrap into cash.</p>
+      <div class="contact-info-list">
+        <div class="contact-info-item"><div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4 class="contact-info-title">Visit Our Yard</h4><p class="contact-info-text">1234 Industrial Blvd, Steel City, SC 12345</p></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h4 class="contact-info-title">Call Us</h4><p class="contact-info-text">(555) 123-4567</p></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><h4 class="contact-info-title">Email Us</h4><p class="contact-info-text">info@ironcladscrap.com</p></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><h4 class="contact-info-title">Business Hours</h4><p class="contact-info-text">Mon-Fri: 7AM-6PM | Sat: 8AM-2PM</p></div></div>
+      </div>
+    </div>
+    <div class="quote-form"><h3 class="form-title">Get a Free Quote</h3><form id="quote-form"><div class="form-row"><div class="form-group"><label class="form-label">Your Name *</label><input type="text" name="name" placeholder="John Smith" required class="form-input"></div><div class="form-group"><label class="form-label">Phone Number *</label><input type="tel" name="phone" placeholder="(555) 123-4567" required class="form-input"></div></div><div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" placeholder="john@example.com" class="form-input"></div><div class="form-group"><label class="form-label">Type of Metal</label><input type="text" name="metalType" placeholder="e.g., Copper wire, Steel beams" class="form-input"></div><div class="form-group"><label class="form-label">Additional Details</label><textarea name="message" placeholder="Describe your scrap metal, estimated quantity..." class="form-textarea" rows="4"></textarea></div><button type="submit" class="btn btn-hero btn-xl form-submit">Request Quote <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button></form></div>
+  </div></div></section>
+
+  <footer class="footer"><div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary)"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 7.196 9.5 3.1 10.598"/><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/><path d="m13.378 9.633 4.096 1.098 1.097-4.096"/></svg><span class="logo-text">IRONCLAD</span></div><p>Your trusted partner in metal recycling. We offer competitive prices and reliable service for all your scrap metal needs.</p></div>
+      <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#services">Services</a></li><li><a href="#about">About Us</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4 class="footer-title">Metals We Buy</h4><ul class="footer-metals"><li>Steel & Iron</li><li>Copper</li><li>Aluminum</li><li>Brass</li><li>Stainless Steel</li><li>Lead & Zinc</li></ul></div>
+      <div><h4 class="footer-title">Contact Us</h4><ul class="footer-contact-list"><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>1234 Industrial Blvd, Steel City, SC 12345</span></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(555) 123-4567</span></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>info@ironcladscrap.com</span></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg><span>Mon-Fri: 7AM-6PM | Sat: 8AM-2PM</span></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Ironclad Scrap Metal. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+  </div></footer>
+
+  <script>
+    function toggleMenu(){var m=document.getElementById('mobile-menu'),mi=document.getElementById('menu-icon'),ci=document.getElementById('close-icon');m.classList.toggle('active');if(m.classList.contains('active')){mi.style.display='none';ci.style.display='block'}else{mi.style.display='block';ci.style.display='none'}}
+    function closeMenu(){var m=document.getElementById('mobile-menu');m.classList.remove('active');document.getElementById('menu-icon').style.display='block';document.getElementById('close-icon').style.display='none'}
+    document.getElementById('quote-form').addEventListener('submit',function(e){e.preventDefault();alert('Thank you! Your quote request has been received. We\'ll get back to you within 24 hours.');this.reset()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+  </script>
+</body>
+</html>

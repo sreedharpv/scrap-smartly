@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 14% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 14% 14%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 14% 14%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 35 92% 50%;
+    --primary-foreground: 220 14% 10%;
+
+    --secondary: 220 14% 18%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 220 14% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 35 92% 50%;
+    --accent-foreground: 220 14% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 35 92% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --steel: 220 14% 25%;
+    --steel-light: 220 10% 40%;
+    --amber-glow: 35 100% 55%;
+    --metal-gradient: linear-gradient(135deg, hsl(220 14% 14%) 0%, hsl(220 14% 8%) 100%);
+    --accent-gradient: linear-gradient(135deg, hsl(35 92% 50%) 0%, hsl(25 95% 45%) 100%);
+    --steel-gradient: linear-gradient(180deg, hsl(220 14% 20%) 0%, hsl(220 14% 12%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(35 92% 50% / 0.15);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    @apply font-bold uppercase tracking-wide;
+  }
+}
+
+@layer components {
+  .metal-texture {
+    background: var(--metal-gradient);
+    position: relative;
+  }
+  
+  .metal-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  .glow-amber {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .text-gradient {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(35 92% 50% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(35 92% 50% / 0.4); }
+  }
+}
